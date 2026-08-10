@@ -25,12 +25,9 @@ trap 'rm -rf "$STAGE"' EXIT
 mkdir "$STAGE/$SLUG"
 
 # Copy the distributable tree, excluding VCS, dev tooling, and build output.
-rsync -a \
-  --exclude '.git' --exclude '.github' --exclude 'node_modules' --exclude 'vendor' \
-  --exclude 'bin' --exclude 'tests' --exclude 'dist' --exclude '.wordpress-org' \
-  --exclude '.gstack' --exclude '.wp-env.json' --exclude '.wp-env.override.json' \
-  --exclude '.gitignore' --exclude '.distignore' --exclude '.DS_Store' --exclude '*.zip' \
-  ./ "$STAGE/$SLUG/"
+# The exclusion list is shared with bin/svn-sync.sh so the ZIP and the
+# WordPress.org trunk always contain the same files.
+rsync -a --exclude-from bin/dist-excludes.txt ./ "$STAGE/$SLUG/"
 
 ( cd "$STAGE" && zip -r -q "$OUT" "$SLUG" )
 

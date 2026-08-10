@@ -1,0 +1,33 @@
+# Paths excluded from every distributable copy of the plugin.
+#
+# Shared by bin/build-zip.sh (the upload ZIP) and bin/svn-sync.sh (the
+# WordPress.org SVN trunk), so the two can never drift apart. rsync
+# --exclude-from format: one pattern per line, '#' starts a comment.
+
+# Version control and VCS metadata
+.git
+.github
+.gitignore
+.svn
+
+# Dev tooling and local environment
+bin
+tests
+.gstack
+.wp-env.json
+.wp-env.override.json
+.distignore
+
+# WordPress.org directory graphics (they live in the SVN /assets root, not in
+# the shipped plugin)
+.wordpress-org
+
+# Dependencies and build output
+node_modules
+vendor
+dist
+*.zip
+
+# OS cruft
+.DS_Store
+Thumbs.db
