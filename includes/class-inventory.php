@@ -39,10 +39,10 @@ class CSCSM_Inventory {
 			'intercomcdn.com'      => array( 'chat', 'Intercom' ),
 			'zdassets.com'         => array( 'chat', 'Zendesk' ),
 			'klaviyo.com'          => array( 'analytics', 'Klaviyo' ),
-			'cdnjs.cloudflare.com' => array( 'cdn', 'cdnjs' ),
+			'cdnjs.cloudflare.com' => array( 'cdn', 'cdnjs' ), // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- recognition pattern only; nothing is loaded from this host.
 			'jsdelivr.net'         => array( 'cdn', 'jsDelivr' ),
-			'code.jquery.com'      => array( 'cdn', 'jQuery CDN' ),
-			'unpkg.com'            => array( 'cdn', 'unpkg' ),
+			'code.jquery.com'      => array( 'cdn', 'jQuery CDN' ), // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- recognition pattern only; nothing is loaded from this host.
+			'unpkg.com'            => array( 'cdn', 'unpkg' ), // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- recognition pattern only; nothing is loaded from this host.
 		);
 	}
 
