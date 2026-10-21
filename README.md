@@ -32,7 +32,7 @@ affiliated with or endorsed by the PCI Security Standards Council.
 **From source**
 
 ```bash
-git clone https://github.com/dennis-wu/checkout-script-monitor.git \
+git clone https://github.com/cybershield-studio/checkout-script-monitor.git \
   wp-content/plugins/cybershield-checkout-script-monitor
 ```
 

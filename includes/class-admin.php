@@ -230,7 +230,7 @@ class CSCSM_Admin {
 			sprintf(
 				/* translators: %s: Webpage Security Checker link. */
 				__( 'Want an outside view of your checkout? Run a free scan with the %s.', 'cybershield-checkout-script-monitor' ),
-				'<a href="https://cybershieldstudio.com/tools/page-checker" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Webpage Security Checker', 'cybershield-checkout-script-monitor' ) . '</a>'
+				'<a href="https://cybershieldstudio.com/tools/page-checker?utm_source=wp-plugin&amp;utm_medium=wp-admin&amp;utm_campaign=cscsm" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Webpage Security Checker', 'cybershield-checkout-script-monitor' ) . '</a>'
 			)
 		);
 		echo ' <a href="' . esc_url( $dismiss ) . '">' . esc_html__( 'Dismiss', 'cybershield-checkout-script-monitor' ) . '</a>';

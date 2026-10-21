@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name:       CyberShield Checkout Script Monitor for WooCommerce
- * Plugin URI:        https://cybershieldstudio.com/tools/page-checker
+ * Plugin URI:        https://github.com/cybershield-studio/checkout-script-monitor
  * Description:       See every script on your checkout and where you stand on PCI DSS 6.4.3, in plain English. A readiness and visibility tool, not a compliance guarantee.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            CyberShield Studio (Dennis Wu, CISSP, PCIP)
@@ -11,6 +11,7 @@
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       cybershield-checkout-script-monitor
+ * Requires Plugins:  woocommerce
  *
  * CyberShield Checkout Script Monitor for WooCommerce is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License, version 2, as
@@ -24,7 +25,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CSCSM_VERSION', '1.0.0' );
+define( 'CSCSM_VERSION', '1.0.1' );
 define( 'CSCSM_FILE', __FILE__ );
 define( 'CSCSM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CSCSM_URL', plugin_dir_url( __FILE__ ) );
@@ -55,6 +56,21 @@ function cscsm_init() {
 	}
 }
 add_action( 'plugins_loaded', 'cscsm_init' );
+
+/**
+ * Declare compatibility with WooCommerce High-Performance Order Storage.
+ * The plugin never reads or writes orders, so it is compatible by design;
+ * declaring it stops WooCommerce listing the plugin as unknown when a store
+ * turns HPOS on.
+ */
+add_action(
+	'before_woocommerce_init',
+	static function () {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
+);
 
 /**
  * Activation: create the violations table and default settings.

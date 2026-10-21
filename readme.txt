@@ -4,7 +4,7 @@ Tags: woocommerce, ecommerce security, pci compliance, checkout, card skimming
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,7 +67,7 @@ No. CyberShield Checkout Script Monitor only uses `Content-Security-Policy-Repor
 
 = Why do some scripts not show up? =
 
-The scan reads scripts written into the page HTML. Scripts injected later by other scripts (for example by a tag manager) may not appear. A full external scan can catch those.
+The scan reads scripts written into the page HTML. Scripts injected later by other scripts (for example by a tag manager) may not appear. An outside scan that loads the page in a real browser catches those, such as the free [Webpage Security Checker](https://cybershieldstudio.com/tools/page-checker?utm_source=wordpress.org&utm_medium=plugin-listing&utm_campaign=cscsm) from the same maker.
 
 = Where do my alerts go? =
 
@@ -82,9 +82,16 @@ To your own WordPress site's database. Nothing is sent to a third party. A futur
 
 == About the author ==
 
-CyberShield Checkout Script Monitor is built by CyberShield Studio, a founder-led PCI compliance practice for e-commerce merchants. Its maker, Dennis Wu, holds the CISSP and PCIP certifications and has 30+ years in security. The plugin is open source (GPLv2), so you can read every line yourself.
+CyberShield Checkout Script Monitor is built by CyberShield Studio, a founder-led PCI compliance practice for e-commerce merchants. Its maker, Dennis Wu, holds the CISSP and PCIP certifications and has 30+ years in security. The plugin is open source (GPLv2), so you can read every line yourself on [GitHub](https://github.com/cybershield-studio/checkout-script-monitor).
+
+The plugin watches your checkout from inside WordPress. For an outside view of the whole store, graded and checked every week, see [Store Health](https://cybershieldstudio.com/?utm_source=wordpress.org&utm_medium=plugin-listing&utm_campaign=cscsm) at [cybershieldstudio.com](https://cybershieldstudio.com/?utm_source=wordpress.org&utm_medium=plugin-listing&utm_campaign=cscsm).
 
 == Changelog ==
+
+= 1.0.1 =
+* Declares compatibility with WooCommerce High-Performance Order Storage (the plugin never touches orders).
+* Adds the WooCommerce dependency header, so WordPress 6.5 and later ask for WooCommerce before activation.
+* Readme: links to the source code and to an outside scan for scripts a tag manager injects.
 
 = 1.0.0 =
 * First public release: checkout script inventory with a plain-English PCI DSS 6.4.3 readout, and optional Content-Security-Policy Report-Only drift monitoring for your cart and checkout.
